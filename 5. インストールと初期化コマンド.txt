@@ -1,0 +1,22 @@
+# 1. 作業フォルダへ移動
+cd your-bot-folder
+
+# 2. 初期化
+npm init -y
+
+# 3. 必要なライブラリをインストール
+npm install firebase-admin
+
+# 4. Firebase CLI をインストール（未インストールなら）
+npm install -g firebase-tools
+
+# 5. Firebaseにログイン
+firebase login
+
+# 6. Firebase初期化（プロジェクト選択）
+firebase init hosting
+# public フォルダ: unity/Build/WebGL を選ぶ
+# SPAかどうかは "No"
+
+# 7. 起動
+node build-bot.js
