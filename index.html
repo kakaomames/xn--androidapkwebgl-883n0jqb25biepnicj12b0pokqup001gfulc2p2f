@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APKアップロード</title>
+  <style>
+    /* ドラッグアンドドロップエリアのスタイル */
+    #drop-area {
+      border: 2px dashed #008CBA;
+      padding: 20px;
+      text-align: center;
+      width: 300px;
+      margin: auto;
+    }
+    #drop-area.hover {
+      background-color: #f0f0f0;
+    }
+    .progress-bar {
+      width: 100%;
+      background-color: #ddd;
+      height: 20px;
+    }
+    .progress-bar div {
+      height: 100%;
+      background-color: #4caf50;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>APKアップロード</h1>
+
+  <!-- ドラッグアンドドロップエリア -->
+  <div id="drop-area">
+    <p>APKファイルをここにドラッグ＆ドロップしてください。</p>
+    <p>または、クリックしてファイルを選択。</p>
+    <input type="file" id="file-input" style="display: none;">
+  </div>
+
+  <div class="progress-bar" id="progress-bar">
+    <div id="progress-bar-fill"></div>
+  </div>
+
+  <script>
+    // ドラッグアンドドロップエリアの処理
+    const dropArea = document.getElementById('drop-area');
+    const fileInput = document.getElementById('file-input');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+
+    // ドラッグオーバーイベント（ドロップエリアにファイルをドラッグした時）
+    dropArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropArea.classList.add('hover');
+    });
+
+    // ドラッグがドロップエリアから外れた時
+    dropArea.addEventListener('dragleave', () => {
+      dropArea.classList.remove('hover');
+    });
+
+    // ファイルがドロップされた時
+    dropArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropArea.classList.remove('hover');
+      const file = e.dataTransfer.files[0];
+      uploadFile(file);
+    });
+
+    // クリックでファイル選択
+    dropArea.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    // ファイル選択時の処理
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      uploadFile(file);
+    });
+
+    // ファイルアップロード処理
+    function uploadFile(file) {
+      const formData = new FormData();
+      formData.append('apk', file);  // ここで正しいフィールド名でファイルを追加
+
+      console.log('アップロードファイル:', file);  // 確認用
+
+      // アップロード開始
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://xn--androidapkwebgl-883n0jqb25biepnicj12b0pokqup001gfulc2p2f.glitch.me/upload', true);
+
+      // 進捗状況の表示
+      xhr.upload.onprogress = (e) => {
+        if (e.lengthComputable) {
+          const percent = (e.loaded / e.total) * 100;
+          progressBarFill.style.width = percent + '%';
+        }
+      };
+
+      // 完了時の処理
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          alert('アップロードが完了しました');
+        } else {
+          alert('アップロード中にエラーが発生しました');
+        }
+      };
+
+      // エラー時の処理
+      xhr.onerror = () => {
+        alert('アップロードエラー');
+      };
+
+      // リクエスト送信
+      xhr.send(formData);
+    }
+  </script>
+
+</body>
+</html>
