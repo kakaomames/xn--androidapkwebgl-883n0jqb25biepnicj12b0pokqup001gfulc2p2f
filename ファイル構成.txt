@@ -1,4 +1,21 @@
+Japanese:
+
 あなたのpc/
+├── build-bot.js
+├── serviceAccountKey.json   ← Firebaseの管理キー
+├── firebase.json            ← Firebase Hostingの設定
+├── .firebaserc              ← Firebaseプロジェクト名
+└── unity/                   ← Unityプロジェクト（後述）
+    ├── Assets/
+    │   ├── Scenes/
+    │   │   └── MainScene.unity
+    │   └── Editor/
+    │       └── BuildScript.cs
+    └── ProjectSettings/
+
+English:
+
+your-bot-folder/
 ├── build-bot.js
 ├── serviceAccountKey.json   ← Firebaseの管理キー
 ├── firebase.json            ← Firebase Hostingの設定
