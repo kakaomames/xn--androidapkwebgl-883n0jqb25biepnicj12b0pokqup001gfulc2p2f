@@ -15,12 +15,12 @@ Japanese:
 
 English:
 
-your-bot-folder/
+your-pc/
 ├── build-bot.js
-├── serviceAccountKey.json   ← Firebaseの管理キー
-├── firebase.json            ← Firebase Hostingの設定
-├── .firebaserc              ← Firebaseプロジェクト名
-└── unity/                   ← Unityプロジェクト（後述）
+├── serviceAccountKey.json   ← Firebase management key
+├── firebase.json            ← Setting up Firebase Hosting
+├── .firebaserc              ← Firebase project name
+└── unity/                   ← Unity project (described below)
     ├── Assets/
     │   ├── Scenes/
     │   │   └── MainScene.unity
