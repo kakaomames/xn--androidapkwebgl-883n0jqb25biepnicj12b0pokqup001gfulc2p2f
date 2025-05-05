@@ -1,0 +1,27 @@
+1. Scenes/MainScene.unity とは？
+
+これは Unityのシーンファイル です。
+
+ゲームの内容（カメラ、オブジェクト、ライトなど）を含むファイル。
+Unityでは少なくとも1つの .unity シーンファイルが必要です。
+BuildScript.cs でこのシーンを読み込んでWebGLに変換します。
+どうやって作るの？
+Unityで以下のように操作して作成できます：
+
+Unityを開く
+新しいプロジェクトを作成（テンプレートは「3D」などでOK）
+メニューの「File」→「Save As」で Assets/Scenes/MainScene.unity として保存
+2. ProjectSettings/ フォルダとは？
+
+これは Unityプロジェクトの設定 がすべて入っているフォルダです。
+
+プラットフォームの設定（WebGLビルドのために必要）
+入力設定、タグ、レイヤー、なども含まれる
+Unityがないとこのフォルダは自動では作れません
+どうやって作るの？
+これもUnityでプロジェクトを作れば自動で作られます。
+
+結論：
+
+UnityのScenes/とProjectSettings/はWebGLビルドに絶対必要です。
+Node.jsスクリプトだけでは作れないので、最初だけでもUnityでプロジェクトを1回作る必要があります。
