@@ -4,7 +4,7 @@ const { google } = require('googleapis');
 const fs = require('fs');
 
 // Unity のビルド部分
-const UNITY_PATH = `"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.0f1\\Editor\\Unity.exe"`;
+const UNITY_PATH = `"C:\\Program Files\\Unity\\Hub\\Editor\\6000.1.1f1\\Editor\\Unity.exe"`;
 const PROJECT_PATH = `"C:\\Users\\kawam\\My project"`;
 const command = `${UNITY_PATH} -batchmode -nographics -silent-crashes -quit -projectPath ${PROJECT_PATH} -executeMethod BuildScript.BuildWebGL`;
 
